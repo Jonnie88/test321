@@ -1,14 +1,20 @@
-pipeline {
-    agent any
-    environment {
-        COMPOSE_PROJECT_NAME = "${env.JOB_NAME}-${env.BUILD_ID}"
-    }
+pipeline { 
+    agent any 
     stages {
-        sh 'docker-compose -v
-    }
-    post {
-        always {
-            sh "docker-compose down -v"
+        stage('Build') { 
+            steps { 
+                echo 'hello' 
+            }
+        }
+        stage('Test'){
+            steps {
+                echo 'hello world' 
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'bye' 
+            }
         }
     }
 }
